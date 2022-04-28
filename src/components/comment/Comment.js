@@ -1,17 +1,28 @@
+import useShowMenu from "../../hooks/useShowMenu";
 import "./comment.css";
 
 const Comment = ({ comment }) => {
-  /* Comment data structure 
-_id: "6261a84b9238a1c664ce00e4"​​​
-content: "SOME NEW CONTENT"​​​
-date: "2022-04-21T18:54:03.891Z"​​​
-name: "userPost"​​​
-post: "626190a793819f3305a20878"
-*/
+  const [showMenu, toggleOn, toggleOff] = useShowMenu();
+
+  const handleClick = (e) => {
+    toggleOn(e);
+  };
+
   return (
     <div className="commentWrap">
       <div className="commentName">
         {comment.name === "" ? "Anonymous" : comment.name}
+        <i
+          class="ri-more-line"
+          style={{ color: showMenu && "rgb(117, 113, 113)", cursor: "pointer" }}
+          onClick={handleClick}
+        ></i>
+        {showMenu && (
+          <div className="delMenu" data-menu={true}>
+            {" "}
+            <i class="ri-delete-bin-2-fill" data-menu={true}></i>
+          </div>
+        )}
       </div>
       <div className="commentContent">{comment.content}</div>
       <div className="commentDate">{comment.date}</div>

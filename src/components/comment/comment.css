@@ -5,15 +5,41 @@
     border-left: none;
     border-right:none;
     padding:10px;
+
   
 }
 
 .commentDate {
     color:rgba(34, 35, 35, 0.491);
     font-size: 0.7em;
+  
     
 }
 
 .commentName {
     font-weight: bold;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: start;
+    justify-content: end;
+    position: relative;
+    grid-gap: 5px;
+    width:min-content;
+
+  
+
+}
+
+.delMenu {
+  
+
+    position: absolute;
+    right:-20px;
+    top: -30%;
+    color:black;
+    font-size: 1.2em;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+ 
 }
