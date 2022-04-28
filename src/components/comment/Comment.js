@@ -4,10 +4,6 @@ import "./comment.css";
 const Comment = ({ comment }) => {
   const [showMenu, toggleOn, toggleOff] = useShowMenu();
 
-  const handleClick = (e) => {
-    toggleOn(e);
-  };
-
   return (
     <div className="commentWrap">
       <div className="commentName">
@@ -15,12 +11,18 @@ const Comment = ({ comment }) => {
         <i
           class="ri-more-line"
           style={{ color: showMenu && "rgb(117, 113, 113)", cursor: "pointer" }}
-          onClick={handleClick}
+          onClick={(e) => {
+            toggleOn(e);
+          }}
         ></i>
         {showMenu && (
           <div className="delMenu" data-menu={true}>
             {" "}
-            <i class="ri-delete-bin-2-fill" data-menu={true}></i>
+            <i
+              class="ri-delete-bin-2-fill"
+              data-menu={true}
+              style={{ cursor: "pointer" }}
+            ></i>
           </div>
         )}
       </div>
