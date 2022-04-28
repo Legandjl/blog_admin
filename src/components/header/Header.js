@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div className={"header"}>
-      <Link to={"/"}>BLOGGER</Link>
+      <Link to={"/"}>BLOGGER ADMIN</Link>
     </div>
   );
 };

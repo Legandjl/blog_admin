@@ -8,8 +8,9 @@ const useComments = (param) => {
 
   const url = `http://localhost:3000${param}/${data.length}`;
 
-
-  //test new repo
+  const refresh = () => {
+    setLoading(true);
+  };
 
   useEffect(() => {
     const loadData = async () => {
