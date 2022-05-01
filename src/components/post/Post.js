@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import "./post.css";
 import CommentSection from "../commentSection/CommentSection";
 import useComments from "../../hooks/useComments";
+import Markdown from "markdown-to-jsx";
 
 const Post = () => {
   const { id } = useParams();
@@ -15,13 +16,7 @@ const Post = () => {
 
   return (
     <div className={"content"}>
-      {!loading && (
-        <ReactMarkdown
-          children={data.post.content}
-          remarkPlugins={[remarkGfm]}
-          escapeHtml={false}
-        />
-      )}
+      {!loading && <Markdown>{data.post.content}</Markdown>}
       {!loading && (
         <CommentSection
           comments={commentData}

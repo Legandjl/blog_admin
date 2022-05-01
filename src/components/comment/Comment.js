@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import useShowMenu from "../../hooks/useShowMenu";
 import "./comment.css";
 
@@ -27,7 +28,9 @@ const Comment = ({ comment }) => {
         )}
       </div>
       <div className="commentContent">{comment.content}</div>
-      <div className="commentDate">{comment.date}</div>
+      <div className="commentDate">
+        {DateTime.fromISO(comment.date).toLocaleString(DateTime.DATETIME_SHORT)}
+      </div>
     </div>
   );
 };

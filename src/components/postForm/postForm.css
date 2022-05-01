@@ -1,0 +1,94 @@
+.editorWrap {
+    display: grid;
+    width:100%; 
+    grid-template-columns: 1fr 1fr;
+    height:28em;
+    margin-top: 5em;
+    align-self: center;
+    grid-gap: 20px;
+    min-width: 850px;
+
+
+
+   
+
+}
+
+.markdownEditorWrap {
+
+    margin-left: 5em;
+    height:100%;
+    padding:10px;
+    background-color: #EEEEEE;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.submit {
+    width:3em;
+    height:2em;
+    justify-self: center;
+    position: fixed;
+    bottom:5.5%;
+    border: none;
+    width:6em;
+
+    background-color:#1B1B1B;
+    color:white;
+   
+
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    cursor: pointer;
+    
+
+}
+
+
+.markdownEditorWrap textarea {
+
+height:100%;
+width:100%;
+border:none;
+outline:none;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+     box-sizing: border-box;
+     background-color: #EEEEEE;
+   
+}
+
+.markdownDisplay {
+
+    height:100%;
+    margin-right: 5em;
+ 
+    text-align: left;
+    padding:10px;
+    background-color: #EEEEEE;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ 
+}
+
+.markdownDisplay , .markdownEditorWrap textarea , .markdownEditorWrap {
+    scrollbar-width: none;  /* Firefox */
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.markdownEditorWrap::-webkit-scrollbar,
+ textarea::-webkit-scrollbar, 
+ .markdownEditorWrap::-webkit-scrollbar{
+    display: none;
+  }
+
+  .confirmation {
+      display: grid;
+      grid-template-columns: auto auto;
+      width:4em;
+      position: fixed;
+      bottom:5.5%;
+      justify-self: center;
+      font-size: 1.4em; 
+  }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import fetchData from "../utils/fetchData";
 
 const useFetch = (param) => {
   const [loading, setLoading] = useState(true);
@@ -12,12 +13,7 @@ const useFetch = (param) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetch(url);
-        if (!data.ok) {
-          throw new Error("Could not fetch the resource");
-        }
-        const jsonData = await data.json();
-
+        const jsonData = await fetchData(url);
         setData(jsonData);
         setLoading(false);
       } catch (e) {

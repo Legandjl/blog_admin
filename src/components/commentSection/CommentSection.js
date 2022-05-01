@@ -7,7 +7,6 @@ import "./commentSection.css";
 
 const CommentSection = (props) => {
   const [commentSubmitted, setCommentSubmitted] = useState(false);
-  const commentEndRef = useRef(null);
 
   const comments = props.comments.map((commemt) => {
     return <Comment comment={commemt} />;
@@ -31,6 +30,8 @@ const CommentSection = (props) => {
         <button className="loadMore" onClick={refreshComments}>
           load more
         </button>
+      ) : comments.length === 0 ? (
+        <p>No comments to show</p>
       ) : (
         <p>End of comments</p>
       )}

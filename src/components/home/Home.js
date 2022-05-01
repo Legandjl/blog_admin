@@ -10,7 +10,13 @@ const Home = () => {
       return <PostLink dataItem={dataItem} />;
     });
   }
-  return !loading && <div className="homeWrap">{posts}</div>;
+  return (
+    !loading && (
+      <div className="homeWrap">
+        <table>{posts}</table>
+      </div>
+    )
+  );
 };
 
 export default Home;
