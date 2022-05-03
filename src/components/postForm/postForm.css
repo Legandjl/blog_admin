@@ -7,6 +7,7 @@
     align-self: center;
     grid-gap: 20px;
     min-width: 850px;
+  
 
 
 
@@ -21,6 +22,7 @@
     padding:10px;
     background-color: #EEEEEE;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
 
 }
 
@@ -56,18 +58,23 @@ outline:none;
      box-sizing: border-box;
      background-color: #EEEEEE;
    
+text-align: left;
 }
 
 .markdownDisplay {
 
     height:100%;
-    margin-right: 5em;
- 
+    margin-right: 5em; 
     text-align: left;
     padding:10px;
     background-color: #EEEEEE;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
  
+}
+
+.markdownDisplay p {
+    padding:0px;
+    margin:0px;
 }
 
 .markdownDisplay , .markdownEditorWrap textarea , .markdownEditorWrap {
