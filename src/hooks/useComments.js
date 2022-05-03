@@ -13,6 +13,27 @@ const useComments = (param) => {
     setLoading(true);
   };
 
+  const removeFront = (id) => {
+    setData((prev) => {
+      return prev.filter((comment) => {
+        return comment._id !== id;
+      });
+    });
+  };
+
+  const handleDel = async (id) => {
+    try {
+      await fetchData(`/admin/comment/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        mode: "cors",
+      });
+      removeFront(id);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     const loadData = async () => {
       setStartedFetch(true);
@@ -37,7 +58,7 @@ const useComments = (param) => {
     }
   }, [loading, startedFetch, url]);
 
-  return [loading, data, refresh, endOfComments];
+  return [loading, data, refresh, endOfComments, handleDel];
 };
 
 export default useComments;

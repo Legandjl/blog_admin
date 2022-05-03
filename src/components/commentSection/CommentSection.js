@@ -8,8 +8,19 @@ import "./commentSection.css";
 const CommentSection = (props) => {
   const [commentSubmitted, setCommentSubmitted] = useState(false);
 
-  const comments = props.comments.map((commemt) => {
-    return <Comment comment={commemt} />;
+  const refreshComments = () => {
+    props.refresh();
+    setCommentSubmitted(true);
+  };
+
+  const comments = props.comments.map((comment) => {
+    return (
+      <Comment
+        comment={comment}
+        refresh={refreshComments}
+        handleDelete={props.handleDelete}
+      />
+    );
   });
 
   useEffect(() => {
@@ -17,11 +28,6 @@ const CommentSection = (props) => {
       animateScroll.scrollToBottom();
     }
   }, [commentSubmitted, props.comments, props.end]);
-
-  const refreshComments = () => {
-    props.refresh();
-    setCommentSubmitted(true);
-  };
 
   return (
     <div className={"commentSection"}>

@@ -9,19 +9,33 @@ import PostLoader from "../loaders/PostLoader";
 const Post = () => {
   const { id } = useParams();
 
-  const [loading, data, refresh] = useFetch(`/blog/${id}`);
-  const [loadingComments, commentData, commentRefresh, endOfComments] =
-    useComments(`/blog/comments/${id}`);
+  const [loading, data, refresh] = useFetch(`/blog/post/${id}`);
+  const [
+    loadingComments,
+    commentData,
+    commentRefresh,
+    endOfComments,
+    handleDel,
+  ] = useComments(`/blog/comments/${id}`);
 
   return (
     <div className={"content"}>
-      {!loading && <Markdown>{data.post.content}</Markdown>}
+      <div
+        className="postcontent"
+        style={{
+          borderBottom:
+            commentData.length === 0 && "solid 1px rgba(0, 0, 0, 0.293)",
+        }}
+      >
+        {!loading && <Markdown>{data.post.content}</Markdown>}
+      </div>
       {!loading && (
         <CommentSection
           comments={commentData}
           loading={loadingComments}
           refresh={commentRefresh}
           endOfComments={endOfComments}
+          handleDelete={handleDel}
         />
       )}
       {loading && <PostLoader />}

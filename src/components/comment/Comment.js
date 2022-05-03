@@ -1,9 +1,16 @@
 import { DateTime } from "luxon";
+
 import useShowMenu from "../../hooks/useShowMenu";
+
 import "./comment.css";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, handleDelete }) => {
   const [showMenu, toggleOn, toggleOff] = useShowMenu();
+
+  const commentDel = async () => {
+    await handleDelete(comment._id);
+    toggleOff();
+  };
 
   return (
     <div className="commentWrap">
@@ -23,6 +30,7 @@ const Comment = ({ comment }) => {
               className="ri-delete-bin-2-fill"
               data-menu={true}
               style={{ cursor: "pointer" }}
+              onClick={commentDel}
             ></i>
           </div>
         )}

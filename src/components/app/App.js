@@ -13,6 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path={"/"} element={<Home />} />
+        <Route path={"/:num"} element={<Home />} />
         <Route path={"/post/:id"} element={<Post />} />
         <Route path={"/new"} element={<PostForm />} />
         <Route path={"/edit/:id"} element={<PostForm />} />
