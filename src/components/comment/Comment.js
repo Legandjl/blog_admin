@@ -10,7 +10,7 @@ const Comment = ({ comment }) => {
       <div className="commentName">
         {comment.name === "" ? "Anonymous" : comment.name}
         <i
-          class="ri-more-line"
+          className="ri-more-line"
           style={{ color: showMenu && "rgb(117, 113, 113)", cursor: "pointer" }}
           onClick={(e) => {
             toggleOn(e);
@@ -20,7 +20,7 @@ const Comment = ({ comment }) => {
           <div className="delMenu" data-menu={true}>
             {" "}
             <i
-              class="ri-delete-bin-2-fill"
+              className="ri-delete-bin-2-fill"
               data-menu={true}
               style={{ cursor: "pointer" }}
             ></i>

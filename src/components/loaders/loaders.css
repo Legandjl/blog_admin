@@ -8,3 +8,22 @@
     margin-left: 2em;
     margin-bottom: 2em;
 }
+
+.postform {
+    height:100%;
+    width:100vw;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.submitSpinner {
+    position: fixed;
+    bottom:5.5%;
+    justify-self: center;
+}
+
+.postLoader{ 
+    justify-self: center;
+    align-self: center;
+}

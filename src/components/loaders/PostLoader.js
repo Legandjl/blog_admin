@@ -1,12 +1,12 @@
 import { SpinnerDiamond } from "spinners-react";
 import "./loaders.css";
 
-const CommentsLoader = () => {
+const PostLoader = () => {
   return (
-    <div className="commentsLoader">
+    <div className="postLoader">
       <SpinnerDiamond color={"#1B1B1B"} size={"2em"} />
     </div>
   );
 };
 
-export default CommentsLoader;
+export default PostLoader;

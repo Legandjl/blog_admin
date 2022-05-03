@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import fetchData from "../utils/fetchData";
 
 const useComments = (param) => {
   const [loading, setLoading] = useState(true);
@@ -6,7 +7,7 @@ const useComments = (param) => {
   const [startedFetch, setStartedFetch] = useState(false);
   const [endOfComments, setEndOfComments] = useState(false);
 
-  const url = `http://localhost:3000${param}/${data.length}`;
+  const url = `${param}/${data.length}`;
 
   const refresh = () => {
     setLoading(true);
@@ -16,21 +17,15 @@ const useComments = (param) => {
     const loadData = async () => {
       setStartedFetch(true);
       try {
-        console.log("fetching");
-        const data = await fetch(url);
-        if (!data.ok) {
-          throw new Error("Could not fetch the resource");
-        }
-        const jsonData = await data.json();
+        const data = await fetchData(url, {});
         setData((prev) => {
-          return [...prev, ...jsonData];
+          return [...prev, ...data];
         });
-        if (jsonData.length <= 1) {
+        if (data.length < 5) {
           setEndOfComments(true);
         } else {
           setEndOfComments(false);
         }
-
         setLoading(false);
         setStartedFetch(false);
       } catch (e) {

@@ -4,7 +4,7 @@ import fetchData from "../utils/fetchData";
 const useFetch = (param) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const url = `http://localhost:3000${param}`;
+  const url = `${param}`;
   console.log(data);
   const refresh = () => {
     setLoading(true);
@@ -13,7 +13,7 @@ const useFetch = (param) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const jsonData = await fetchData(url);
+        const jsonData = await fetchData(url, {});
         setData(jsonData);
         setLoading(false);
       } catch (e) {

@@ -1,5 +1,6 @@
 import { useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
+import fetchData from "../../utils/fetchData";
 import "./commentSubmit.css";
 
 const initialFormState = {
@@ -9,6 +10,7 @@ const initialFormState = {
 
 //reset reducer
 //https://mtm.dev/reset-usereducer-state
+//TODO -reset after comment submit
 
 const reducer = (state, action) => {
   return { ...state, [action.field]: action.value };
@@ -25,7 +27,7 @@ const CommentSubmit = (props) => {
 
   const handleSubmit = async () => {
     setSubmitting(true);
-    await fetch(`http://localhost:3000/blog/${id}`, {
+    await fetchData(`/blog/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       mode: "cors",

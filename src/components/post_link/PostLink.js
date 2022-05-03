@@ -2,8 +2,17 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 import "./postLink.css";
+import fetchData from "../../utils/fetchData";
 
 const PostLink = (props) => {
+  const handleDel = async () => {
+    await fetchData(`/admin/post/${props.dataItem._id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+    });
+    props.refresh();
+  };
   return (
     <tr>
       <td>
@@ -23,6 +32,13 @@ const PostLink = (props) => {
       <td>
         {" "}
         <Link to={`/edit/${props.dataItem._id}`}>Edit</Link>
+      </td>
+      <td>
+        <i
+          className="ri-delete-bin-2-fill"
+          onClick={handleDel}
+          style={{ cursor: "pointer" }}
+        ></i>
       </td>
     </tr>
   );

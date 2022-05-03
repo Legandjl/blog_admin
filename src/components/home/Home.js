@@ -7,13 +7,15 @@ const Home = () => {
   let posts;
   if (!loading) {
     posts = data.map((dataItem) => {
-      return <PostLink dataItem={dataItem} />;
+      return <PostLink dataItem={dataItem} refresh={refresh} />;
     });
   }
   return (
     !loading && (
       <div className="homeWrap">
-        <table>{posts}</table>
+        <table>
+          <tbody>{posts}</tbody>
+        </table>
       </div>
     )
   );

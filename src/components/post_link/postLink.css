@@ -15,18 +15,20 @@
 
 .postFooter {
     border:solid 1px;
-
     display: grid;
     align-content: center;
     padding:10px;
     border-left: none;
     border-right: none;
-    border-bottom: none;
-  
+    border-bottom: none;  
 }
 
 
 
 td {
     text-align: center;
+}
+
+tr {
+    height:2.5em;
 }

@@ -1,11 +1,10 @@
-import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import remarkGfm from "remark-gfm";
 import "./post.css";
 import CommentSection from "../commentSection/CommentSection";
 import useComments from "../../hooks/useComments";
 import Markdown from "markdown-to-jsx";
+import PostLoader from "../loaders/PostLoader";
 
 const Post = () => {
   const { id } = useParams();
@@ -25,6 +24,7 @@ const Post = () => {
           endOfComments={endOfComments}
         />
       )}
+      {loading && <PostLoader />}
     </div>
   );
 };

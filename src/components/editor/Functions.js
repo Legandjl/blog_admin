@@ -8,12 +8,12 @@ const Functions = (props) => {
       ) : (
         <div className="confirmation">
           <i
-            class="ri-check-line"
+            className="ri-check-line"
             style={{ cursor: "pointer" }}
             onClick={props.handleSubmit}
           ></i>
           <i
-            class="ri-close-fill"
+            className="ri-close-fill"
             style={{ cursor: "pointer" }}
             onClick={props.confirmationCheck}
           ></i>
