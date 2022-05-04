@@ -1,9 +1,9 @@
 .header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    position: fixed;
+
     width: 100vw;
-    height: 4em;
+    height: 60px;
     background: rgba(25, 25, 25, 0.99);
     align-content: center;
     z-index: 1;

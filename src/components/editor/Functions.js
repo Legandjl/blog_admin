@@ -1,6 +1,6 @@
 const Functions = (props) => {
   return (
-    <>
+    <div className="functionWrap">
       {!props.submissionConfirmed ? (
         <button className="submit" onClick={props.confirmationCheck}>
           {"Submit"}
@@ -19,7 +19,7 @@ const Functions = (props) => {
           ></i>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

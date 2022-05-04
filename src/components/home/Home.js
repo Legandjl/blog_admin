@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import HomeLoader from "../loaders/HomeLoader";
 
 import PostLink from "../post_link/PostLink";
 import Arrow from "./Arrow";
@@ -17,47 +18,56 @@ const Home = () => {
       return <PostLink dataItem={dataItem} refresh={refresh} />;
     });
   }
-  return (
-    !loading && (
-      <div className="homeWrap">
-        {toSkip > 0 && (
-          <Arrow
-            direction={"left"}
-            style={{
-              position: "fixed",
-              left: "60px",
-              top: "50%",
-              cursor: "pointer",
-            }}
-            toSkip={toSkip}
-            setToSkip={setToSkip}
-            setCount={setCount}
-            refresh={refresh}
-          />
-        )}
-        <table>
-          <tbody>{posts}</tbody>
-        </table>
-        {!arrowCheck && (
-          <Arrow
-            direction={"right"}
-            style={{
-              position: "fixed",
-              right: "60px",
-              top: "50%",
-              cursor: "pointer",
-            }}
-            toSkip={toSkip}
-            setToSkip={setToSkip}
-            setCount={setCount}
-            refresh={refresh}
-          />
-        )}
-        <p style={{ position: "fixed", bottom: "60px", right: "50%" }}>
-          {count}
-        </p>
-      </div>
-    )
+  return !loading ? (
+    <div className="homeWrap">
+      {toSkip > 0 && (
+        <Arrow
+          direction={"left"}
+          style={{
+            position: "absolute",
+            left: "-20px",
+            top: "50%",
+            cursor: "pointer",
+            fontSize: "1.4em",
+          }}
+          toSkip={toSkip}
+          setToSkip={setToSkip}
+          setCount={setCount}
+          refresh={refresh}
+        />
+      )}
+      <table>
+        <tbody>{posts}</tbody>
+      </table>
+      {!arrowCheck && (
+        <Arrow
+          direction={"right"}
+          style={{
+            position: "absolute",
+            right: "-20px",
+            top: "50%",
+            cursor: "pointer",
+            fontSize: "1.4em",
+          }}
+          toSkip={toSkip}
+          setToSkip={setToSkip}
+          setCount={setCount}
+          refresh={refresh}
+        />
+      )}
+      <p
+        style={{
+          position: "absolute",
+          bottom: "60px",
+          right: "50%",
+          fontWeight: "bold",
+        }}
+      >
+        {count}
+      </p>
+    </div>
+  ) : (
+    <HomeLoader />
   );
 };
 

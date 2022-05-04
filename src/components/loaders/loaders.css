@@ -18,12 +18,16 @@
 }
 
 .submitSpinner {
-    position: fixed;
-    bottom:5.5%;
+    position: absolute;
+    bottom:-65px;
     justify-self: center;
 }
 
 .postLoader{ 
     justify-self: center;
+    align-self: center;
+}
+
+.homeLoader {
     align-self: center;
 }
