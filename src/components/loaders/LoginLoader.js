@@ -1,4 +1,4 @@
-import { SpinnerInfinity, SpinnerRound } from "spinners-react";
+import { SpinnerRound } from "spinners-react";
 import "./loaders.css";
 
 const LoginLoader = () => {

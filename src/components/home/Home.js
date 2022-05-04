@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useLoadData from "../../hooks/useLoadData";
-import HomeLoader from "../loaders/HomeLoader";
 import LoginLoader from "../loaders/LoginLoader";
-
 import PostLink from "../post_link/PostLink";
 import Arrow from "./Arrow";
 import "./home.css";
@@ -10,6 +8,8 @@ import "./home.css";
 const Home = () => {
   const [toSkip, setToSkip] = useState(0);
   const [loading, data, refresh] = useLoadData(`/blog/${toSkip}`);
+  // count data overall size and check if less or equal than data.length + toskip
+  //display arrow based on this
   const [count, setCount] = useState(1);
   const arrowCheck = data.length < 10;
 
