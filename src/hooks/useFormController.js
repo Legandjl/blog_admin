@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import fetchData from "../utils/fetchData";
+import { UserContext } from "../context/UserContext";
+import useFetchData from "./useFetchData";
 
 const useFormController = () => {
   const markdown = `
@@ -21,10 +22,13 @@ You can even include custom React components if you declare them in the "overrid
     
 <MyComponent>Isn't that cool?</MyComponent>`;
 
+  const [fetchData, fetchInProgress] = useFetchData();
+
   const [markDownContent, setMarkDownContent] = useState(markdown);
   const [submissionConfirmed, setSubmissionConfirmed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { token } = useContext(UserContext);
 
   const nav = useNavigate();
 
@@ -36,7 +40,8 @@ You can even include custom React components if you declare them in the "overrid
     console.log("im here");
     const startFetch = async () => {
       try {
-        const data = await fetchData(`/blog/${id}`, {});
+        const data = await fetchData(`/blog/post/${id}`, {});
+        console.log(data);
         setMarkDownContent(data.post.content);
         setLoading(false);
       } catch (e) {
@@ -50,7 +55,7 @@ You can even include custom React components if you declare them in the "overrid
       setMarkDownContent(markdown);
       setLoading(false);
     }
-  }, [id, loading, markdown]);
+  }, [fetchData, id, loading, markdown]);
 
   const handleChange = (e) => {
     setMarkDownContent(e.target.value);
@@ -61,7 +66,10 @@ You can even include custom React components if you declare them in the "overrid
       setSubmitting(true);
       const response = await fetchData(url, {
         method: !id ? "POST" : "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         mode: "cors",
         body: JSON.stringify({ title: "test", content: markDownContent }),
       });

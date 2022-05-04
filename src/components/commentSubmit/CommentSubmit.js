@@ -1,17 +1,12 @@
 import { useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
-import fetchData from "../../utils/fetchData";
+import useFetchData from "../../hooks/useFetchData";
 import "./commentSubmit.css";
 
 const initialFormState = {
   name: "",
   content: "",
 };
-
-//reset reducer
-//https://mtm.dev/reset-usereducer-state
-//TODO -reset after comment submit
-
 const reducer = (state, action) => {
   return { ...state, [action.field]: action.value };
 };
@@ -19,22 +14,31 @@ const reducer = (state, action) => {
 const CommentSubmit = (props) => {
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const [submitting, setSubmitting] = useState(false);
+
   const { id } = useParams();
+  const [fetchData, fetchInProgress] = useFetchData();
 
   const handleChange = (e) => {
     dispatch({ field: e.target.name, value: e.target.value });
   };
 
   const handleSubmit = async () => {
-    setSubmitting(true);
-    await fetchData(`/blog/${id}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      mode: "cors",
-      body: JSON.stringify(state),
-    });
-    props.refresh();
-    setSubmitting(false);
+    try {
+      setSubmitting(true);
+      await fetchData(`/blog/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify(state),
+      });
+      props.refresh();
+      setSubmitting(false);
+    } catch (e) {
+      //todo handle
+      console.log(e);
+    }
   };
 
   return (

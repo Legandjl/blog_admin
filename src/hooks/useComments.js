@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
-import fetchData from "../utils/fetchData";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../context/UserContext";
+
+import useFetchData from "./useFetchData";
 
 const useComments = (param) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [startedFetch, setStartedFetch] = useState(false);
   const [endOfComments, setEndOfComments] = useState(false);
+  const { token } = useContext(UserContext);
 
   const url = `${param}/${data.length}`;
+  const [fetchData, fetchInProgress] = useFetchData();
 
   const refresh = () => {
     setLoading(true);
@@ -25,7 +29,10 @@ const useComments = (param) => {
     try {
       await fetchData(`/admin/comment/${id}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         mode: "cors",
       });
       removeFront(id);
@@ -56,7 +63,7 @@ const useComments = (param) => {
     if (loading && !startedFetch) {
       loadData();
     }
-  }, [loading, startedFetch, url]);
+  }, [fetchData, loading, startedFetch, url]);
 
   return [loading, data, refresh, endOfComments, handleDel];
 };

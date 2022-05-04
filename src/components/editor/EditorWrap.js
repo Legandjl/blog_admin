@@ -4,7 +4,7 @@ import Functions from "./Functions";
 import MarkdownDisplay from "./MarkdownDisplay";
 const EditorWrap = (props) => {
   return (
-    <>
+    <div className="editorWrap">
       <Editor
         markDownContent={props.markDownContent}
         handleChange={props.handleChange}
@@ -17,9 +17,12 @@ const EditorWrap = (props) => {
           submissionConfirmed={props.submissionConfirmed}
         />
       ) : (
-        <SubmitLoader />
+        <div className="functionWrap">
+          {" "}
+          <SubmitLoader />{" "}
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

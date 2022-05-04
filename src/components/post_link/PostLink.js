@@ -2,16 +2,28 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 import "./postLink.css";
-import fetchData from "../../utils/fetchData";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import useFetchData from "../../hooks/useFetchData";
 
 const PostLink = (props) => {
+  const { token } = useContext(UserContext);
+  const [fetchData, fetchInProgress] = useFetchData();
   const handleDel = async () => {
-    await fetchData(`/admin/post/${props.dataItem._id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      mode: "cors",
-    });
-    props.refresh();
+    try {
+      await fetchData(`/admin/post/${props.dataItem._id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        mode: "cors",
+      });
+      props.refresh();
+    } catch (e) {
+      console.log(e);
+      //todo handle
+    }
   };
   return (
     <tr>

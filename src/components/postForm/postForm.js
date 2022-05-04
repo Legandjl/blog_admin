@@ -15,7 +15,7 @@ const PostForm = () => {
   ] = useFormController();
 
   return (
-    <div className="editorWrap">
+    <>
       {loading ? (
         <PostFormLoader />
       ) : (
@@ -28,7 +28,7 @@ const PostForm = () => {
           submitting={submitting}
         />
       )}
-    </div>
+    </>
   );
 };
 export default PostForm;

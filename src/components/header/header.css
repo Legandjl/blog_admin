@@ -1,6 +1,6 @@
 .header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
 
     width: 100vw;
     height: 60px;
@@ -19,6 +19,13 @@
     text-decoration: none;
     color: inherit;
     text-shadow: inherit;
+  }
+
+  .logout {
+    grid-column: 4;
+    margin-right: 4em;
+    font-size: 0.9em;
+    cursor: pointer;
   }
   
 

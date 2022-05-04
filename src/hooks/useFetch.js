@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import fetchData from "../utils/fetchData";
+import useFetchData from "./useFetchData";
 
 const useFetch = (param) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const url = `${param}`;
-  console.log(data);
+  const [fetchData, fetchInProgress] = useFetchData();
+
   const refresh = () => {
     setLoading(true);
   };
@@ -13,17 +13,17 @@ const useFetch = (param) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const jsonData = await fetchData(url, {});
+        const jsonData = await fetchData(param, {});
         setData(jsonData);
         setLoading(false);
       } catch (e) {
         console.log(e);
       }
     };
-    if (loading) {
+    if (loading && !fetchInProgress) {
       loadData();
     }
-  }, [loading, url]);
+  }, [fetchData, fetchInProgress, loading, param]);
 
   return [loading, data, refresh];
 };

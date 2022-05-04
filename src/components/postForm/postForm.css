@@ -9,8 +9,8 @@
     height:100%;
     align-content: center;
     grid-template-rows: 1fr auto; 
-    margin-top: 4em;
-    align-items: center;
+
+    align-items: end;
 
 }
 
@@ -45,7 +45,7 @@
 .functionWrap {
     grid-column: 1/-1;
     height: 3em;
-    margin-bottom: 30px;
+  
 
     display: grid;
     align-items: flex-start;
