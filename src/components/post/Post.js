@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import useLoadData from "../../hooks/useLoadData";
 import "./post.css";
 import CommentSection from "../commentSection/CommentSection";
 import useComments from "../../hooks/useComments";
@@ -9,7 +9,7 @@ import PostLoader from "../loaders/PostLoader";
 const Post = () => {
   const { id } = useParams();
 
-  const [loading, data, refresh] = useFetch(`/blog/post/${id}`);
+  const [loading, data, refresh] = useLoadData(`/blog/post/${id}`);
   const [
     loadingComments,
     commentData,

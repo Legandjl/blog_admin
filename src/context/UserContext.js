@@ -40,21 +40,19 @@ const UserContextProvider = (props) => {
     }
   }, [loading, nav, token]);
 
-  const handleLogin = async () => {
+  const handleLogin = async (password) => {
     const data = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify({ username: "admin", password: "9114" }),
+      body: JSON.stringify({ username: "admin", password: password }),
     });
     const json = await data.json();
     localStorage.setItem("token", json.token);
     setToken(json.token);
-    if (data.ok) {
-      nav("/home", { replace: true });
-    }
+    return data;
   };
 
   const logout = async () => {

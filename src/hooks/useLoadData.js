@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetchData from "./useFetchData";
 
-const useFetch = (param) => {
+const useLoadData = (param) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [fetchData, fetchInProgress] = useFetchData();
@@ -28,4 +28,4 @@ const useFetch = (param) => {
   return [loading, data, refresh];
 };
 
-export default useFetch;
+export default useLoadData;

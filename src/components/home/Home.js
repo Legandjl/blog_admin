@@ -1,6 +1,7 @@
 import { useState } from "react";
-import useFetch from "../../hooks/useFetch";
+import useLoadData from "../../hooks/useLoadData";
 import HomeLoader from "../loaders/HomeLoader";
+import LoginLoader from "../loaders/LoginLoader";
 
 import PostLink from "../post_link/PostLink";
 import Arrow from "./Arrow";
@@ -8,7 +9,7 @@ import "./home.css";
 
 const Home = () => {
   const [toSkip, setToSkip] = useState(0);
-  const [loading, data, refresh] = useFetch(`/blog/${toSkip}`);
+  const [loading, data, refresh] = useLoadData(`/blog/${toSkip}`);
   const [count, setCount] = useState(1);
   const arrowCheck = data.length < 10;
 
@@ -67,7 +68,7 @@ const Home = () => {
       </p>
     </div>
   ) : (
-    <HomeLoader />
+    <LoginLoader />
   );
 };
 
