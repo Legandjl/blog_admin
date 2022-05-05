@@ -10,20 +10,15 @@ const PostLink = (props) => {
   const { token } = useContext(UserContext);
   const [fetchData, fetchInProgress] = useFetchData();
   const handleDel = async () => {
-    try {
-      await fetchData(`/admin/post/${props.dataItem._id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        mode: "cors",
-      });
-      props.refresh();
-    } catch (e) {
-      console.log(e);
-      //todo handle
-    }
+    await fetchData(`/admin/post/${props.dataItem._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      mode: "cors",
+    });
+    props.refresh();
   };
   return (
     <tr>

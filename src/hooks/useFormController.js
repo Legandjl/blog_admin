@@ -34,20 +34,12 @@ You can even include custom React components if you declare them in the "overrid
 
   const { id } = useParams();
   const url = !id ? `/admin/new` : `/admin/${id}`;
-  console.log(id);
 
   useEffect(() => {
-    console.log("im here");
     const startFetch = async () => {
-      try {
-        const data = await fetchData(`/blog/post/${id}`, {});
-        console.log(data);
-        setMarkDownContent(data.post.content);
-        setLoading(false);
-      } catch (e) {
-        console.error(e);
-        setLoading(false);
-      }
+      const data = await fetchData(`/blog/post/${id}`, {});
+      setMarkDownContent(data.post.content);
+      setLoading(false);
     };
     if (id && loading) {
       startFetch();
@@ -62,23 +54,18 @@ You can even include custom React components if you declare them in the "overrid
   };
 
   const handleSubmit = async () => {
-    try {
-      setSubmitting(true);
-      const response = await fetchData(url, {
-        method: !id ? "POST" : "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        mode: "cors",
-        body: JSON.stringify({ title: "test", content: markDownContent }),
-      });
-      setSubmitting(false);
-      nav(`/post/${response.post_id}`, { replace: true });
-    } catch (e) {
-      console.error(e);
-      //nav to oops
-    }
+    setSubmitting(true);
+    const response = await fetchData(url, {
+      method: !id ? "POST" : "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      mode: "cors",
+      body: JSON.stringify({ title: "test", content: markDownContent }),
+    });
+    setSubmitting(false);
+    nav(`/post/${response.post_id}`, { replace: true });
   };
 
   const confirmationCheck = () => {

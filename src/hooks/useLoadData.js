@@ -12,13 +12,9 @@ const useLoadData = (param) => {
 
   useEffect(() => {
     const loadData = async () => {
-      try {
-        const jsonData = await fetchData(param, {});
-        setData(jsonData);
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
-      }
+      const jsonData = await fetchData(param, {});
+      setData(jsonData);
+      setLoading(false);
     };
     if (loading && !fetchInProgress) {
       loadData();

@@ -26,39 +26,31 @@ const useComments = (param) => {
   };
 
   const handleDel = async (id) => {
-    try {
-      await fetchData(`/admin/comment/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        mode: "cors",
-      });
-      removeFront(id);
-    } catch (e) {
-      console.error(e);
-    }
+    await fetchData(`/admin/comment/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      mode: "cors",
+    });
+    removeFront(id);
   };
 
   useEffect(() => {
     const loadData = async () => {
       setStartedFetch(true);
-      try {
-        const data = await fetchData(url, {});
-        setData((prev) => {
-          return [...prev, ...data];
-        });
-        if (data.length < 5) {
-          setEndOfComments(true);
-        } else {
-          setEndOfComments(false);
-        }
-        setLoading(false);
-        setStartedFetch(false);
-      } catch (e) {
-        console.log(e);
+      const data = await fetchData(url, {});
+      setData((prev) => {
+        return [...prev, ...data];
+      });
+      if (data.length < 5) {
+        setEndOfComments(true);
+      } else {
+        setEndOfComments(false);
       }
+      setLoading(false);
+      setStartedFetch(false);
     };
     if (loading && !startedFetch) {
       loadData();

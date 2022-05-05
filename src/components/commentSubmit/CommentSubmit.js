@@ -23,22 +23,17 @@ const CommentSubmit = (props) => {
   };
 
   const handleSubmit = async () => {
-    try {
-      setSubmitting(true);
-      await fetchData(`/blog/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify(state),
-      });
-      props.refresh();
-      setSubmitting(false);
-    } catch (e) {
-      //todo handle
-      console.log(e);
-    }
+    setSubmitting(true);
+    await fetchData(`/blog/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(state),
+    });
+    props.refresh();
+    setSubmitting(false);
   };
 
   return (
