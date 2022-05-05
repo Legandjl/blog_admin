@@ -5,6 +5,7 @@ import "./postLink.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import useFetchData from "../../hooks/useFetchData";
+import Toggle from "../editor/Toggle";
 
 const PostLink = (props) => {
   const { token } = useContext(UserContext);
@@ -22,7 +23,7 @@ const PostLink = (props) => {
   };
   return (
     <tr>
-      <td>
+      <td style={{ fontWeight: "600" }}>
         {" "}
         <ReactMarkdown children={props.dataItem.title.substring(0, 20)} />
       </td>
@@ -34,12 +35,18 @@ const PostLink = (props) => {
 
       <td>
         {" "}
-        {DateTime.fromISO(props.dataItem.date).toLocaleString(DateTime.ISO)}
+        <Link to={`/edit/${props.dataItem._id}`}>Edit</Link>
       </td>
       <td>
         {" "}
-        <Link to={`/edit/${props.dataItem._id}`}>Edit</Link>
+        {DateTime.fromISO(props.dataItem.date).toLocaleString(DateTime.ISO)}
       </td>
+
+      <td>
+        {" "}
+        <Toggle published={props.dataItem.published} refresh={props.refresh} />
+      </td>
+
       <td>
         <i
           className="ri-delete-bin-2-fill"

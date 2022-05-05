@@ -12,6 +12,7 @@ const PostForm = () => {
     handleSubmit,
     confirmationCheck,
     loading,
+    published,
   ] = useFormController();
 
   return (
@@ -26,6 +27,7 @@ const PostForm = () => {
           handleSubmit={handleSubmit}
           submissionConfirmed={submissionConfirmed}
           submitting={submitting}
+          published={published}
         />
       )}
     </>

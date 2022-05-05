@@ -10,6 +10,19 @@
 
 }
 
+.filter {
+  position: absolute;
+  top:-40px;
+  display: grid;
+  font-size: 0.8em;
+  grid-template-columns: 1fr 1fr;
+  font-weight: 600;
+}
+
+.filter p:hover {
+  cursor: pointer;
+}
+
 .tableWrap {
   display: grid;
   align-self: start;
@@ -24,6 +37,8 @@ table {
     width: 100%;
     min-width: 80vw;
     height:100%;
+    table-layout: fixed ;
+  width: 100% ;
 
 
   }

@@ -4,14 +4,26 @@ import useLoadData from "../../hooks/useLoadData";
 import LoginLoader from "../loaders/LoginLoader";
 import PostLink from "../post_link/PostLink";
 import Arrow from "./Arrow";
+import Filter from "./Filter";
 import "./home.css";
 
 const Home = () => {
   const [toSkip, setToSkip] = useState(0);
-  const [loading, data, refresh] = useLoadData(`/blog/${toSkip}`);
+
   const [showRightArrow, setShowRightArrow] = useState(false);
   const [fetchData, fetchInProgress] = useFetchData();
   const [count, setCount] = useState(1);
+  const [currentFilter, setFilter] = useState("published");
+  const [loading, data, refresh] = useLoadData(
+    `/blog/${toSkip}?published=${currentFilter === "published"}`
+  );
+
+  console.log(currentFilter);
+
+  const handleFilter = (val) => {
+    setFilter(val);
+    refresh();
+  };
 
   //check if we need to show right arrow
   useEffect(() => {
@@ -38,6 +50,7 @@ const Home = () => {
   }
   return !loading && !fetchInProgress ? (
     <div className="homeWrap">
+      <Filter handleFilter={handleFilter} currentFilter={currentFilter} />
       {toSkip > 0 && (
         <Arrow
           direction={"left"}

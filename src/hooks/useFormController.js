@@ -26,6 +26,7 @@ You can even include custom React components if you declare them in the "overrid
 
   const [markDownContent, setMarkDownContent] = useState(markdown);
   const [submissionConfirmed, setSubmissionConfirmed] = useState(false);
+  const [published, setPublished] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
   const { token } = useContext(UserContext);
@@ -39,6 +40,7 @@ You can even include custom React components if you declare them in the "overrid
     const startFetch = async () => {
       const data = await fetchData(`/blog/post/${id}`, {});
       setMarkDownContent(data.post.content);
+      setPublished(data.post.published);
       setLoading(false);
     };
     if (id && loading) {
@@ -82,6 +84,7 @@ You can even include custom React components if you declare them in the "overrid
     handleSubmit,
     confirmationCheck,
     loading,
+    published,
   ];
 };
 
