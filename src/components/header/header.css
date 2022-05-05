@@ -1,6 +1,6 @@
 .header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: auto auto auto ;
 
     width: 100vw;
     height: 60px;
@@ -11,6 +11,7 @@
     color: white;
     top:0;
     align-items: center;
+    justify-items: center;
 
   
    
@@ -19,18 +20,24 @@
   .header a {
     text-decoration: none;
     color: inherit;
-    text-shadow: inherit;
+    text-shadow: inherit;  
   }
 
   .logout {
-
-
     font-size: 0.9em;
     cursor: pointer;
   }
+
+  .headerIcon {
+    display: inline-block;
+    justify-self: center;
+  }
   
 
+.headerIcon:hover {
+  text-shadow: 0 0 5px #f7f9f6;
 
+}
 
 
   
@@ -39,5 +46,5 @@
 
   
 
-  /* if window position, scroll pos top have box shadow, else none */
+
   
