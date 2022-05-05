@@ -8,6 +8,7 @@
 .postcontent {
     min-height: 100vh;
     text-align: left;
+    padding-bottom: 2em;
 }
 
 .content img {

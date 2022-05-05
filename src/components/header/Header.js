@@ -7,14 +7,15 @@ const Header = () => {
   const { token, logout } = useContext(UserContext);
   return (
     <div className={"header"}>
-      <Link to={"/home"} style={{ gridColumn: 2 }}>
-        BLOGGER ADMIN
-      </Link>
       {token && (
         <Link to={"/new"} style={{ marginRight: "30px" }}>
           <i class="ri-add-line" style={{ fontSize: "1.1em" }}></i>
         </Link>
       )}
+      <Link to={"/home"} style={{ gridColumn: 2 }}>
+        BLOGGER ADMIN
+      </Link>
+
       {token && (
         <div className="logout">
           {" "}

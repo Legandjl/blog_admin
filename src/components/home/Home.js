@@ -10,10 +10,10 @@ const Home = () => {
   const [toSkip, setToSkip] = useState(0);
   const [loading, data, refresh] = useLoadData(`/blog/${toSkip}`);
   const [showRightArrow, setShowRightArrow] = useState(false);
-  const [fetchData] = useFetchData();
+  const [fetchData, fetchInProgress] = useFetchData();
   const [count, setCount] = useState(1);
 
-  //check if we need to let user move to next lot of posts
+  //check if we need to show right arrow
   useEffect(() => {
     const checkTotalPosts = async () => {
       const totalPosts = await fetchData("/blog/count");
@@ -30,7 +30,7 @@ const Home = () => {
       return <PostLink dataItem={dataItem} refresh={refresh} />;
     });
   }
-  return !loading ? (
+  return !loading && !fetchInProgress ? (
     <div className="homeWrap">
       {toSkip > 0 && (
         <Arrow
