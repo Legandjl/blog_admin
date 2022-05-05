@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetchData from "../../hooks/useFetchData";
 import useLoadData from "../../hooks/useLoadData";
 import LoginLoader from "../loaders/LoginLoader";
 import PostLink from "../post_link/PostLink";
@@ -8,10 +9,20 @@ import "./home.css";
 const Home = () => {
   const [toSkip, setToSkip] = useState(0);
   const [loading, data, refresh] = useLoadData(`/blog/${toSkip}`);
-  // count data overall size and check if less or equal than data.length + toskip
-  //display arrow based on this
+  const [showRightArrow, setShowRightArrow] = useState(false);
+  const [fetchData] = useFetchData();
   const [count, setCount] = useState(1);
-  const arrowCheck = data.length < 10;
+
+  //check if we need to let user move to next lot of posts
+  useEffect(() => {
+    const checkTotalPosts = async () => {
+      const totalPosts = await fetchData("/blog/count");
+      setShowRightArrow(totalPosts > 10 + toSkip);
+    };
+    if (loading) {
+      checkTotalPosts();
+    }
+  }, [fetchData, loading, toSkip]);
 
   let posts;
   if (!loading) {
@@ -40,7 +51,7 @@ const Home = () => {
       <table>
         <tbody>{posts}</tbody>
       </table>
-      {!arrowCheck && (
+      {showRightArrow && (
         <Arrow
           direction={"right"}
           style={{

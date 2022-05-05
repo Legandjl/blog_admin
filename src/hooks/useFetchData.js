@@ -23,7 +23,6 @@ const useFetchData = () => {
       console.log("caught an error" + e);
     }
   };
-
   return [fetchData];
 };
 

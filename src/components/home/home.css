@@ -30,3 +30,16 @@ table {
       background-color: #dddddd8a;
  
   }
+
+  table a {
+
+      color:black;
+      font-weight: 500;
+
+  }
+
+  table a:hover {
+
+    color: #3a3838ce;
+
+  }
