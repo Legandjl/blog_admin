@@ -24,6 +24,12 @@ const Home = () => {
     }
   }, [fetchData, loading, toSkip]);
 
+  useEffect(() => {
+    if (data.length === 0) {
+      console.log("no data");
+    }
+  }, []);
+
   let posts;
   if (!loading) {
     posts = data.map((dataItem) => {
@@ -37,7 +43,7 @@ const Home = () => {
           direction={"left"}
           style={{
             position: "absolute",
-            left: "-35px",
+            left: "-45px",
             top: "45%",
             cursor: "pointer",
             fontSize: "1.4em",
@@ -58,7 +64,7 @@ const Home = () => {
           direction={"right"}
           style={{
             position: "absolute",
-            right: "-35px",
+            right: "-45px",
             top: "45%",
             cursor: "pointer",
             fontSize: "1.4em",

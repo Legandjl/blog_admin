@@ -9,17 +9,20 @@ const Header = () => {
     <div className={"header"}>
       {token && (
         <Link to={"/new"} style={{ marginRight: "30px" }}>
-          <i class="ri-add-line" style={{ fontSize: "1.1em" }}></i>
+          <i
+            className="ri-add-line headerIcon"
+            style={{ fontSize: "1.1em" }}
+          ></i>
         </Link>
       )}
-      <Link to={"/home"} style={{ gridColumn: 2 }}>
+      <Link className="headerIcon" to={"/home"} style={{ gridColumn: 2 }}>
         BLOGGER ADMIN
       </Link>
 
       {token && (
         <div className="logout">
           {" "}
-          <i class="ri-logout-circle-line" onClick={logout}></i>
+          <i className="ri-logout-circle-line headerIcon" onClick={logout}></i>
         </div>
       )}
     </div>

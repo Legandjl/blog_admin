@@ -21,9 +21,10 @@ const useFetchData = () => {
       return jsonData;
     } catch (e) {
       console.log("caught an error" + e);
+      setLoading(false);
     }
   };
-  return [fetchData];
+  return [fetchData, loading];
 };
 
 export default useFetchData;
