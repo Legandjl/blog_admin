@@ -37,8 +37,8 @@ const Home = () => {
           direction={"left"}
           style={{
             position: "absolute",
-            left: "-20px",
-            top: "50%",
+            left: "-35px",
+            top: "45%",
             cursor: "pointer",
             fontSize: "1.4em",
           }}
@@ -48,16 +48,18 @@ const Home = () => {
           refresh={refresh}
         />
       )}
-      <table>
-        <tbody>{posts}</tbody>
-      </table>
+      <div className="tableWrap">
+        <table>
+          <tbody>{posts}</tbody>
+        </table>
+      </div>
       {showRightArrow && (
         <Arrow
           direction={"right"}
           style={{
             position: "absolute",
-            right: "-20px",
-            top: "50%",
+            right: "-35px",
+            top: "45%",
             cursor: "pointer",
             fontSize: "1.4em",
           }}
@@ -69,9 +71,6 @@ const Home = () => {
       )}
       <p
         style={{
-          position: "absolute",
-          bottom: "60px",
-          right: "50%",
           fontWeight: "bold",
         }}
       >

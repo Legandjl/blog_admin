@@ -1,30 +1,39 @@
 .homeWrap {
     
     display: grid;
-    grid-gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    grid-auto-rows: min-content;
+    grid-gap: 10px;  
     align-self: center;
     position: relative;
-    height:100%;   
-    min-height: 37em;
+
+    height: 28em;
+    grid-template-rows: 1fr auto;
 
 }
 
+.tableWrap {
+  display: grid;
+  align-self: start;
+  height:100%;
+
+  grid-auto-rows: min-content;  
+}
+
 table {
-    margin-top: 6em;
+
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
     min-width: 80vw;
     height:100%;
+
+
   }
   
   tr {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+
   }
   
   tr:nth-child(even) {
