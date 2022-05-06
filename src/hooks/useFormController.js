@@ -22,13 +22,14 @@ You can even include custom React components if you declare them in the "overrid
     
 <MyComponent>Isn't that cool?</MyComponent>`;
 
-  const [fetchData, fetchInProgress] = useFetchData();
+  const [fetchData] = useFetchData();
 
   const [markDownContent, setMarkDownContent] = useState(markdown);
   const [submissionConfirmed, setSubmissionConfirmed] = useState(false);
   const [published, setPublished] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [date, setDate] = useState(Date.now());
   const { token } = useContext(UserContext);
 
   const nav = useNavigate();
@@ -41,6 +42,7 @@ You can even include custom React components if you declare them in the "overrid
       const data = await fetchData(`/blog/post/${id}`, {});
       setMarkDownContent(data.post.content);
       setPublished(data.post.published);
+      setDate(data.post.date);
       setLoading(false);
     };
     if (id && loading) {
@@ -64,7 +66,13 @@ You can even include custom React components if you declare them in the "overrid
         Authorization: `Bearer ${token}`,
       },
       mode: "cors",
-      body: JSON.stringify({ title: "test", content: markDownContent }),
+      body: JSON.stringify({
+        title: "test",
+        content: markDownContent,
+        published: published,
+        date: date,
+      }),
+      //todo test date functionality
     });
     setSubmitting(false);
     nav(`/post/${response.post_id}`, { replace: true });
