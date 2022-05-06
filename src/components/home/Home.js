@@ -9,45 +9,57 @@ import "./home.css";
 
 const Home = () => {
   const [toSkip, setToSkip] = useState(0);
-
   const [showRightArrow, setShowRightArrow] = useState(false);
   const [fetchData, fetchInProgress] = useFetchData();
   const [count, setCount] = useState(1);
   const [currentFilter, setFilter] = useState("published");
   const [loading, data, refresh] = useLoadData(
-    `/blog/${toSkip}?published=${currentFilter === "published"}`
+    `/admin/${toSkip}?published=${currentFilter === "published"}`
   );
-
-  console.log(currentFilter);
-
+  // reset count & toskip on filter change
   const handleFilter = (val) => {
     setFilter(val);
+    setToSkip(0);
+    setCount(1);
     refresh();
   };
+  console.log(toSkip + "toskip");
+  // if returned data is empty move back to prev lot of data
+  useEffect(() => {
+    if (!loading) {
+      if (data.length === 0 && count > 1) {
+        setToSkip((prev) => {
+          if (prev > 0) {
+            setCount((prev) => {
+              return prev - 1;
+            });
+            return prev - 10;
+          } else {
+            return prev;
+          }
+        });
+        refresh();
+      }
+    }
+  }, [count, data, loading, refresh]);
 
   //check if we need to show right arrow
   useEffect(() => {
     const checkTotalPosts = async () => {
-      const totalPosts = await fetchData("/blog/count");
+      const totalPosts = await fetchData(
+        `/blog/count?published=${currentFilter === "published"}`
+      );
       setShowRightArrow(totalPosts > 10 + toSkip);
     };
     if (loading) {
       checkTotalPosts();
     }
-  }, [fetchData, loading, toSkip]);
+  }, [currentFilter, fetchData, loading, toSkip]);
 
-  useEffect(() => {
-    if (data.length === 0) {
-      console.log("no data");
-    }
-  }, []);
+  const posts = data.map((dataItem) => {
+    return <PostLink dataItem={dataItem} refresh={refresh} />;
+  });
 
-  let posts;
-  if (!loading) {
-    posts = data.map((dataItem) => {
-      return <PostLink dataItem={dataItem} refresh={refresh} />;
-    });
-  }
   return !loading && !fetchInProgress ? (
     <div className="homeWrap">
       <Filter handleFilter={handleFilter} currentFilter={currentFilter} />

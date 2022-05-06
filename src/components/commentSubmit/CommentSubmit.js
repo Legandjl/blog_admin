@@ -4,7 +4,7 @@ import useFetchData from "../../hooks/useFetchData";
 import "./commentSubmit.css";
 
 const initialFormState = {
-  name: "",
+  name: "Admin",
   content: "",
 };
 const reducer = (state, action) => {
@@ -46,13 +46,6 @@ const CommentSubmit = (props) => {
         value={state.content}
       />
       <div className="submitWrap">
-        <input
-          name={"name"}
-          type="text"
-          placeholder="Username (optional)"
-          onChange={handleChange}
-          value={state.name}
-        />
         <button disabled={submitting} onClick={handleSubmit}>
           {submitting ? "..." : "Submit"}
         </button>
