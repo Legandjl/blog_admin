@@ -23,8 +23,8 @@ const Home = () => {
     setCount(1);
     refresh();
   };
-  console.log(toSkip + "toskip");
-  // if returned data is empty move back to prev lot of data
+
+  // if returned data is empty move back to prev set of data and decrement page count
   useEffect(() => {
     if (!loading) {
       if (data.length === 0 && count > 1) {

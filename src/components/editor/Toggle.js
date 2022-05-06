@@ -1,8 +1,12 @@
 const Toggle = (props) => {
-  const handlePub = () => {
-    console.log("PUBLISHING");
-  };
-  return <p onClick={handlePub}>{props.published ? "Unpublish" : "Publish"}</p>;
+  return (
+    <p
+      style={{ cursor: "pointer", textDecoration: "underline" }}
+      onClick={props.handlePub}
+    >
+      {props.published ? "Unpublish" : "Publish"}
+    </p>
+  );
 };
 
 export default Toggle;

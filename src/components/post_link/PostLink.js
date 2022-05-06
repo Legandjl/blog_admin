@@ -21,6 +21,24 @@ const PostLink = (props) => {
     });
     props.refresh();
   };
+
+  const handlePub = async () => {
+    console.log(props.dataItem.published);
+    await fetchData(
+      `/admin/publish/${props.dataItem._id}?published=${
+        props.dataItem.published === true ? false : true
+      }`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        mode: "cors",
+      }
+    );
+    props.refresh();
+  };
   return (
     <tr>
       <td style={{ fontWeight: "600" }}>
@@ -44,7 +62,11 @@ const PostLink = (props) => {
 
       <td>
         {" "}
-        <Toggle published={props.dataItem.published} refresh={props.refresh} />
+        <Toggle
+          published={props.dataItem.published}
+          refresh={props.refresh}
+          handlePub={handlePub}
+        />
       </td>
 
       <td>
