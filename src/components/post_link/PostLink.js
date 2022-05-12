@@ -5,11 +5,13 @@ import "./postLink.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import useFetchData from "../../hooks/useFetchData";
-import Toggle from "../editor/Toggle";
+
+import Publish from "../publish/Publish";
 
 const PostLink = (props) => {
   const { token } = useContext(UserContext);
-  const [fetchData, fetchInProgress] = useFetchData();
+  const [fetchData] = useFetchData();
+
   const handleDel = async () => {
     await fetchData(`/admin/post/${props.dataItem._id}`, {
       method: "DELETE",
@@ -22,23 +24,6 @@ const PostLink = (props) => {
     props.refresh();
   };
 
-  const handlePub = async () => {
-    console.log(props.dataItem.published);
-    await fetchData(
-      `/admin/publish/${props.dataItem._id}?published=${
-        props.dataItem.published === true ? false : true
-      }`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        mode: "cors",
-      }
-    );
-    props.refresh();
-  };
   return (
     <tr>
       <td style={{ fontWeight: "600" }}>
@@ -62,10 +47,10 @@ const PostLink = (props) => {
 
       <td>
         {" "}
-        <Toggle
-          published={props.dataItem.published}
-          refresh={props.refresh}
-          handlePub={handlePub}
+        <Publish
+          cb={props.refresh}
+          dataItem={props.dataItem}
+          style={{ curser: "pointer", textDecoration: "underline" }}
         />
       </td>
 

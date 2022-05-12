@@ -9,6 +9,9 @@ import PostForm from "../postForm/postForm";
 import Login from "../login/Login";
 import { UserContextProvider } from "../../context/UserContext";
 import ProtectedRoute from "../protectedRoute/ProtectedRoute";
+import NotFound from "../errors/NotFound";
+import Oops from "../errors/Oops";
+import Unauthorised from "../errors/Unauthorised";
 
 function App() {
   return (
@@ -20,14 +23,6 @@ function App() {
           <Route path={"/login"} element={<Login />} />
           <Route
             path={"/home"}
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={"/:num"}
             element={
               <ProtectedRoute>
                 <Home />
@@ -58,6 +53,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/unauthorised" element={<Unauthorised />} />
+          <Route path="/oops" element={<Oops />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </UserContextProvider>

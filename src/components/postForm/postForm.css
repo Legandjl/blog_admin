@@ -4,15 +4,17 @@
     grid-template-columns: 1fr 1fr;   
     align-self: center;
     grid-gap: 20px;
-    min-width: 850px;
+
     position: relative;
     height:100%;
     align-content: center;
-    grid-template-rows: 1fr auto; 
+    grid-template-rows:  1fr auto; 
 
     align-items: end;
 
 }
+
+
 
 .markdownEditorWrap {
 
@@ -106,3 +108,4 @@ text-align: left;
       justify-self: center;
       font-size: 1.4em; 
   }
+

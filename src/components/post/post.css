@@ -3,10 +3,36 @@
     width:80vw;
     padding-top: 4em;  
     text-align: left;
+
+    
+}
+
+.toolbar {
+
+
+    width:100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    justify-items: start;
+
+   
+}
+
+.toolbar p {
+    cursor: pointer;
+}
+
+.postFunction {
+    color:black;
+}
+
+.toolbar p:hover, .postFunction:hover {
+    color: #3a3838ce;
 }
 
 .postcontent {
-    min-height: 100vh;
+    min-height: 98vh;
     text-align: left;
     padding-bottom: 2em;
 }

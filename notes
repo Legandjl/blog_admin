@@ -7,5 +7,8 @@ edit button on view page
 unauthorised with redirect
 oops page
 
-date/published needs to be set on edit
+
+nav to post after publish
+lift publish to its own function
+allow publish from view page
 

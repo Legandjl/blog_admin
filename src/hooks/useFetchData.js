@@ -6,13 +6,16 @@ const useFetchData = () => {
   const { logout } = useContext(UserContext);
 
   const fetchData = async (params, options) => {
+    console.log("fetching");
     try {
       const url = `http://localhost:3000${params}`;
       setLoading(true);
       const data = await fetch(url, options);
+      console.log(data.status);
       if (data.status === 401) {
         logout();
       }
+
       if (!data.ok) {
         throw new Error("Could not fetch the resource");
       }

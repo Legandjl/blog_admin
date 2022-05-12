@@ -1,6 +1,6 @@
 import usePub from "../../hooks/usePub";
 
-const Toggle = (props) => {
+const Publish = (props) => {
   const [handlePub] = usePub();
   const handleClick = async () => {
     await handlePub(props.dataItem);
@@ -8,10 +8,10 @@ const Toggle = (props) => {
   };
 
   return (
-    <p style={{ ...props.style }} onClick={handleClick}>
+    <p style={{ ...props.style, cursor: "pointer" }} onClick={handleClick}>
       {props.dataItem.published ? "Unpublish" : "Publish"}
     </p>
   );
 };
 
-export default Toggle;
+export default Publish;

@@ -1,0 +1,19 @@
+.notFoundWrapper {
+
+    display: grid;
+
+
+    align-self: center;
+    grid-auto-rows: min-content;
+    align-items: center;
+    grid-gap: 10px;
+ 
+
+}
+
+.notFoundWrapper h1 {
+    margin:0px;
+    font-size: 2.4em;
+    padding:0px;
+
+}
