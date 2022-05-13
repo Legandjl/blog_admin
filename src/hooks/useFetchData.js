@@ -1,21 +1,21 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useFetchData = () => {
   const [loading, setLoading] = useState(false);
-  const { logout } = useContext(UserContext);
+  const nav = useNavigate();
 
   const fetchData = async (params, options) => {
-    console.log("fetching");
     try {
       const url = `http://localhost:3000${params}`;
       setLoading(true);
       const data = await fetch(url, options);
-      console.log(data.status);
       if (data.status === 401) {
-        logout();
+        nav(`/unauthorised`, { replace: true });
       }
-
+      if (data.status === 404) {
+        nav(`/404`, { replace: true });
+      }
       if (!data.ok) {
         throw new Error("Could not fetch the resource");
       }
@@ -23,8 +23,8 @@ const useFetchData = () => {
       setLoading(false);
       return jsonData;
     } catch (e) {
-      console.log("caught an error" + e);
       setLoading(false);
+      nav(`/oops`, { replace: true });
     }
   };
   return [fetchData, loading];
