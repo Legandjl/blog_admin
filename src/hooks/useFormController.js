@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import useFetchData from "./useFetchData";
 
@@ -37,6 +37,15 @@ You can even include custom React components if you declare them in the "overrid
 
   const { id } = useParams();
   const url = !id ? `/admin/new` : `/admin/${id}`;
+  const location = useLocation();
+  //form refresh on location change
+  useEffect(() => {
+    setTitle("");
+    setMarkDownContent(markDownContent);
+    setLoading(true);
+    setPublished(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.key]);
 
   useEffect(() => {
     const startFetch = async () => {

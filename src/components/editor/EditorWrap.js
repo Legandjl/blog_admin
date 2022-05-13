@@ -4,6 +4,7 @@ import Functions from "./Functions";
 import MarkdownDisplay from "./MarkdownDisplay";
 
 const EditorWrap = (props) => {
+  //resets window pos on nav
   return (
     <div className="editorWrap">
       <input

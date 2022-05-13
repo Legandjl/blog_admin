@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import "./header.css";
 
 const Header = () => {
   const { token, logout } = useContext(UserContext);
+
   return (
     <div className={"header"}>
       {token && (

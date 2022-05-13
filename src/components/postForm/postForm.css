@@ -9,7 +9,8 @@
     align-content: center;
     grid-template-rows:  auto 1fr auto; 
     align-items: center;
-    min-height: 38em;
+    min-height: 36em;
+    margin-top: 2em;
 }
 
 .markdownEditorWrap {
