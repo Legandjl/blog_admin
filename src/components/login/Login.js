@@ -12,7 +12,12 @@ const Login = () => {
 
   useEffect(() => {
     if (token && !signingIn) {
-      nav(`/home`, { replace: true });
+      const path = localStorage.getItem("path");
+      if (!path || path === "/") {
+        nav(`/home`, { replace: true });
+      } else {
+        nav(path, { replace: true });
+      }
     }
   }, [nav, signingIn, token]);
 

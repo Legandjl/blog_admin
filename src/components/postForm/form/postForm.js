@@ -1,6 +1,6 @@
 import "./postForm.css";
-import useFormController from "../../hooks/useFormController";
-import PostFormLoader from "../loaders/PostFormLoader";
+import useFormController from "../../../hooks/useFormController";
+import PostFormLoader from "../../loaders/PostFormLoader";
 import EditorWrap from "../editor/EditorWrap";
 
 const PostForm = () => {

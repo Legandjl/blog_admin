@@ -5,7 +5,7 @@ import Home from "../home/Home";
 import Header from "../header/Header";
 import Post from "../post/Post";
 import Footer from "../footer/Footer";
-import PostForm from "../postForm/postForm";
+import PostForm from "../postForm/form/postForm";
 import Login from "../login/Login";
 import { UserContextProvider } from "../../context/UserContext";
 import ProtectedRoute from "../protectedRoute/ProtectedRoute";

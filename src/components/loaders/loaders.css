@@ -9,7 +9,7 @@
     margin-bottom: 2em;
 }
 
-.postform {
+.postformloader {
     height:100%;
     width:100vw;
     display: grid;
@@ -26,6 +26,11 @@
 .postLoader{ 
     justify-self: center;
     align-self: center;
+
+    height:100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .homeLoader {

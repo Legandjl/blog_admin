@@ -59,6 +59,7 @@ const Post = () => {
         }}
       >
         {!loading && <Markdown>{data.post.content}</Markdown>}
+        {loading && <PostLoader />}
       </div>
       {!loading && (
         <CommentSection
@@ -69,7 +70,6 @@ const Post = () => {
           handleDelete={handleDel}
         />
       )}
-      {loading && <PostLoader />}
     </div>
   );
 };

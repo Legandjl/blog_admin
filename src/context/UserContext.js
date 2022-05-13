@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UserContext = React.createContext();
 
@@ -8,6 +8,13 @@ const UserContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   const nav = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      localStorage.setItem("path", location.pathname);
+    }
+  }, [location, location.key]);
 
   useEffect(() => {
     const login = async () => {
@@ -17,10 +24,13 @@ const UserContextProvider = (props) => {
           setLoading(false);
           return;
         }
-        const testLogin = await fetch("http://localhost:3000/admin/test", {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const testLogin = await fetch(
+          "https://intense-chamber-01379.herokuapp.com/admin/test",
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (testLogin.status === 401) {
           logout();
@@ -31,7 +41,6 @@ const UserContextProvider = (props) => {
         }
         setLoading(false);
       } catch (e) {
-        console.log("something went wrong");
         logout();
       }
     };
@@ -41,14 +50,17 @@ const UserContextProvider = (props) => {
   }, [loading, nav, token]);
 
   const handleLogin = async (password) => {
-    const data = await fetch("http://localhost:3000/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-      body: JSON.stringify({ username: "admin", password: password }),
-    });
+    const data = await fetch(
+      "https://intense-chamber-01379.herokuapp.com/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ username: "admin", password: password }),
+      }
+    );
     const json = await data.json();
     localStorage.setItem("token", json.token);
     setToken(json.token);
@@ -59,6 +71,7 @@ const UserContextProvider = (props) => {
     setLoading(false);
     setToken(null);
     localStorage.setItem("token", "");
+    localStorage.setItem("path", "");
   };
 
   return (

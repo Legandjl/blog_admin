@@ -3,7 +3,7 @@ import "./loaders.css";
 
 const PostFormLoader = () => {
   return (
-    <div className="postform">
+    <div className="postformloader">
       <SpinnerDiamond color={"#1B1B1B"} size={"2em"} />
     </div>
   );

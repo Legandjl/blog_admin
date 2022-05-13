@@ -1,4 +1,4 @@
-import SubmitLoader from "../loaders/SubmitLoader";
+import SubmitLoader from "../../loaders/SubmitLoader";
 import Editor from "./Editor";
 import Functions from "./Functions";
 import MarkdownDisplay from "./MarkdownDisplay";
