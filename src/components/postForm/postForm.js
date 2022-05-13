@@ -13,6 +13,8 @@ const PostForm = () => {
     confirmationCheck,
     loading,
     published,
+    title,
+    updateTitle,
   ] = useFormController();
 
   return (
@@ -28,6 +30,8 @@ const PostForm = () => {
           submissionConfirmed={submissionConfirmed}
           submitting={submitting}
           published={published}
+          title={title}
+          updateTitle={updateTitle}
         />
       )}
     </>

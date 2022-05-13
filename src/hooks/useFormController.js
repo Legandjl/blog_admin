@@ -25,6 +25,7 @@ You can even include custom React components if you declare them in the "overrid
   const [fetchData] = useFetchData();
 
   const [markDownContent, setMarkDownContent] = useState(markdown);
+  const [title, setTitle] = useState("");
   const [submissionConfirmed, setSubmissionConfirmed] = useState(false);
   const [published, setPublished] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -41,20 +42,26 @@ You can even include custom React components if you declare them in the "overrid
     const startFetch = async () => {
       const data = await fetchData(`/blog/post/${id}`, {});
       setMarkDownContent(data.post.content);
+      setTitle(data.post.title);
       setPublished(data.post.published);
       setDate(data.post.date);
       setLoading(false);
     };
     if (id && loading) {
       startFetch();
-    } else if (!id) {
+    } else if (!id && loading) {
       setMarkDownContent(markdown);
+      setTitle("");
       setLoading(false);
     }
   }, [fetchData, id, loading, markdown]);
 
   const handleChange = (e) => {
     setMarkDownContent(e.target.value);
+  };
+
+  const updateTitle = (e) => {
+    setTitle(e.target.value);
   };
 
   const handleSubmit = async () => {
@@ -67,7 +74,7 @@ You can even include custom React components if you declare them in the "overrid
       },
       mode: "cors",
       body: JSON.stringify({
-        title: "test",
+        title: title,
         content: markDownContent,
         published: published,
         date: date,
@@ -93,6 +100,8 @@ You can even include custom React components if you declare them in the "overrid
     confirmationCheck,
     loading,
     published,
+    title,
+    updateTitle,
   ];
 };
 

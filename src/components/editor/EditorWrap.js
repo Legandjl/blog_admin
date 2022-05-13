@@ -6,6 +6,15 @@ import MarkdownDisplay from "./MarkdownDisplay";
 const EditorWrap = (props) => {
   return (
     <div className="editorWrap">
+      <input
+        className="title"
+        type={"text"}
+        value={props.title}
+        onChange={props.updateTitle}
+        placeholder={"Post title - 20 chars or less"}
+        maxLength={20}
+      />
+
       <Editor
         markDownContent={props.markDownContent}
         handleChange={props.handleChange}

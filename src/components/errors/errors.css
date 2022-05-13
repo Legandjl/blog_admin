@@ -17,3 +17,32 @@
     padding:0px;
 
 }
+
+.unauthorised {
+    align-self: center;
+    display: grid;
+}
+.loginLink {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+}
+
+.loginLink a {
+    color:black;
+}
+
+.oops {
+    display: grid;
+    align-self: center;
+    justify-items: center;
+}
+.oopsInner {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+
+}
+ .oopsInner a {
+    color:black;
+ }
