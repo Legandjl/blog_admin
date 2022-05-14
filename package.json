@@ -2,7 +2,7 @@
   "name": "blog_front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Legandjl.github.io",
+  "homepage": "https://Legandjl.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",

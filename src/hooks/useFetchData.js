@@ -7,7 +7,7 @@ const useFetchData = () => {
 
   const fetchData = async (params, options) => {
     try {
-      const url = `https://intense-chamber-01379.herokuapp.com/${params}`;
+      const url = `https://intense-chamber-01379.herokuapp.com${params}`;
       setLoading(true);
       const data = await fetch(url, options);
       const jsonData = await data.json();
