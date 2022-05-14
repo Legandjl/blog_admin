@@ -1,7 +1,7 @@
 .content {
     display: grid;
     width:80vw;
-    padding-top: 4em;  
+    padding-top: 3em;  
     text-align: left;
 
     
@@ -15,6 +15,7 @@
     grid-template-columns: auto auto;
     justify-content: start;
     justify-items: start;
+    align-items: center;
 
    
 }
@@ -32,7 +33,7 @@
 }
 
 .postcontent {
-    min-height: 98vh;
+
     text-align: left;
     padding-bottom: 2em;
 }

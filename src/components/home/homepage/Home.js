@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../../hooks/useFetchData";
-import useLoadData from "../../hooks/useLoadData";
-import LoginLoader from "../loaders/LoginLoader";
+import useFetchData from "../../../hooks/useFetchData";
+import useLoadData from "../../../hooks/useLoadData";
+import LoginLoader from "../../loaders/LoginLoader";
 import PostLink from "../post_link/PostLink";
-import Arrow from "./Arrow";
-import Filter from "./Filter";
+import Arrow from "../other/Arrow";
+import Filter from "../other/Filter";
 import "./home.css";
 
 const Home = () => {

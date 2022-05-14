@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-import useShowMenu from "../../hooks/useShowMenu";
+import useShowMenu from "../../../hooks/useShowMenu";
 
 import "./comment.css";
 

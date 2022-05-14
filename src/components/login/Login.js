@@ -6,6 +6,7 @@ import "./login.css";
 
 const Login = () => {
   const { handleLogin, token, signingIn } = useContext(UserContext);
+
   const nav = useNavigate();
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -13,7 +14,14 @@ const Login = () => {
   useEffect(() => {
     if (token && !signingIn) {
       const path = localStorage.getItem("path");
-      if (!path || path === "/") {
+      if (
+        !path ||
+        path === "/login" ||
+        path === "/oops" ||
+        path === "/404" ||
+        path === "/oops" ||
+        path === "/unauthorised"
+      ) {
         nav(`/home`, { replace: true });
       } else {
         nav(path, { replace: true });

@@ -11,7 +11,7 @@ const Post = () => {
   const { id } = useParams();
 
   const [loading, data, refresh] = useLoadData(`/blog/post/${id}`);
-  console.log(data);
+
   const [
     loadingComments,
     commentData,

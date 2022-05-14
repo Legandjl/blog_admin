@@ -6,11 +6,13 @@ const UserContext = React.createContext();
 const UserContextProvider = (props) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const nav = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
+    //keep track of user as they move through the app
+    //location is maintained on browser refresh
+    //logout clears location
     if (location.pathname !== "/") {
       localStorage.setItem("path", location.pathname);
     }
@@ -33,6 +35,7 @@ const UserContextProvider = (props) => {
         );
 
         if (testLogin.status === 401) {
+          //auth failed, clear all and set loading to false
           logout();
         } else {
           //Authenticated

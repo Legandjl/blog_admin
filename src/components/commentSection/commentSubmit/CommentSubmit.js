@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
-import useFetchData from "../../hooks/useFetchData";
+import useFetchData from "../../../hooks/useFetchData";
+
 import "./commentSubmit.css";
 
 const initialFormState = {

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Comment from "../comment/Comment";
-import CommentSubmit from "../commentSubmit/CommentSubmit";
+
 import CommentsLoader from "../loaders/CommentsLoader";
 import { animateScroll } from "react-scroll/modules";
 import "./commentSection.css";
+import CommentSubmit from "./commentSubmit/CommentSubmit";
+import Comment from "./comment/Comment";
 
 const CommentSection = (props) => {
   const [commentSubmitted, setCommentSubmitted] = useState(false);
