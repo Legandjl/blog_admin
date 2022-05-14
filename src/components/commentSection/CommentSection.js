@@ -34,9 +34,9 @@ const CommentSection = (props) => {
     <div className={"commentSection"}>
       {comments}
       {!props.endOfComments ? (
-        <button className="loadMore" onClick={refreshComments}>
+        <p className="loadMore" onClick={refreshComments}>
           load more
-        </button>
+        </p>
       ) : comments.length === 0 ? (
         <p>No comments to show</p>
       ) : (

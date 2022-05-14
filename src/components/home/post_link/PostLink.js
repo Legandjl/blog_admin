@@ -25,7 +25,7 @@ const PostLink = (props) => {
 
   return (
     <tr>
-      <td style={{ fontWeight: "600" }}>
+      <td style={{ fontWeight: "600", textAlign: "left", paddingLeft: "10px" }}>
         {" "}
         <ReactMarkdown children={props.dataItem.title.substring(0, 20)} />
       </td>

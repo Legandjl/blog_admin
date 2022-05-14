@@ -6,7 +6,7 @@ import useFetchData from "./useFetchData";
 const useComments = (param) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [startedFetch, setStartedFetch] = useState(false);
+
   const [endOfComments, setEndOfComments] = useState(false);
   const { token } = useContext(UserContext);
 
@@ -39,7 +39,6 @@ const useComments = (param) => {
 
   useEffect(() => {
     const loadData = async () => {
-      setStartedFetch(true);
       const data = await fetchData(url, {});
       setData((prev) => {
         return [...prev, ...data];
@@ -50,12 +49,11 @@ const useComments = (param) => {
         setEndOfComments(false);
       }
       setLoading(false);
-      setStartedFetch(false);
     };
-    if (loading && !startedFetch) {
+    if (loading && !fetchInProgress) {
       loadData();
     }
-  }, [fetchData, loading, startedFetch, url]);
+  }, [fetchData, fetchInProgress, loading, url]);
 
   return [loading, data, refresh, endOfComments, handleDel];
 };
