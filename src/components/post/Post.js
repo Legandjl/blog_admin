@@ -19,8 +19,6 @@ const Post = () => {
     endOfComments,
     handleDel,
   ] = useComments(`/blog/comments/${id}`);
-  //todo edit link
-  // publish function
 
   return (
     <div className={"content"}>

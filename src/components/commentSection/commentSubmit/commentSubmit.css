@@ -16,6 +16,7 @@ textarea {
     resize: none;
     padding:5px;
     width:22.2em;
+outline:none;
       
   }
 

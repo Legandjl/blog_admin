@@ -88,7 +88,6 @@ You can even include custom React components if you declare them in the "overrid
         published: published,
         date: date,
       }),
-      //todo test date functionality
     });
     setSubmitting(false);
     nav(`/post/${response.post_id}`, { replace: true });

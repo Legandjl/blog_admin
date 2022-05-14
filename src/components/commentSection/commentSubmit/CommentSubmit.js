@@ -17,7 +17,7 @@ const CommentSubmit = (props) => {
   const [submitting, setSubmitting] = useState(false);
 
   const { id } = useParams();
-  const [fetchData, fetchInProgress] = useFetchData();
+  const [fetchData] = useFetchData();
 
   const handleChange = (e) => {
     dispatch({ field: e.target.name, value: e.target.value });
