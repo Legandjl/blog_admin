@@ -20,6 +20,7 @@ function App() {
         <Header />
         <Routes>
           <Route path={"/"} element={<Login />} />
+          <Route path={"/blog_admin"} element={<Login />} />
           <Route path={"/login"} element={<Login />} />
           <Route
             path={"/home"}
