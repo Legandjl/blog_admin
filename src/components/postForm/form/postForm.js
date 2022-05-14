@@ -15,6 +15,7 @@ const PostForm = () => {
     published,
     title,
     updateTitle,
+    errored,
   ] = useFormController();
 
   return (
@@ -32,6 +33,7 @@ const PostForm = () => {
           published={published}
           title={title}
           updateTitle={updateTitle}
+          errored={errored}
         />
       )}
     </>

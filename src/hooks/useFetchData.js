@@ -7,7 +7,7 @@ const useFetchData = () => {
 
   const fetchData = async (params, options) => {
     try {
-      const url = `https://intense-chamber-01379.herokuapp.com${params}`;
+      const url = `http://localhost:3000${params}`;
       setLoading(true);
       const data = await fetch(url, options);
       if (data.status === 401) {
@@ -20,6 +20,7 @@ const useFetchData = () => {
         nav(`/404`, { replace: true });
         return;
       }
+
       if (!data.ok) {
         throw new Error("Could not fetch the resource");
       }

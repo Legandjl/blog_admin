@@ -7,14 +7,23 @@ const EditorWrap = (props) => {
   //resets window pos on nav
   return (
     <div className="editorWrap">
-      <input
-        className="title"
-        type={"text"}
-        value={props.title}
-        onChange={props.updateTitle}
-        placeholder={"Post title - 20 chars or less"}
-        maxLength={20}
-      />
+      <div className="formHeader">
+        {" "}
+        <input
+          className="title"
+          type={"text"}
+          value={props.title}
+          onChange={props.updateTitle}
+          placeholder={"Post title - 20 chars or less"}
+          maxLength={20}
+        />
+        {props.errored === 1 && (
+          <p className="errorMessage">Title must be specified</p>
+        )}
+        {props.errored === 2 && (
+          <p className="errorMessage">Content must be specified</p>
+        )}
+      </div>
 
       <Editor
         markDownContent={props.markDownContent}
@@ -26,6 +35,7 @@ const EditorWrap = (props) => {
           confirmationCheck={props.confirmationCheck}
           handleSubmit={props.handleSubmit}
           submissionConfirmed={props.submissionConfirmed}
+          errored={props.errored}
         />
       ) : (
         <div className="functionWrap">

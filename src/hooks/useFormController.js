@@ -25,12 +25,15 @@ You can even include custom React components if you declare them in the "overrid
   const [fetchData] = useFetchData();
 
   const [markDownContent, setMarkDownContent] = useState(markdown);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("New Post");
   const [submissionConfirmed, setSubmissionConfirmed] = useState(false);
   const [published, setPublished] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState(Date.now());
+  const [errored, setErrored] = useState(0);
+  //0 = no errors, 1 = title error, 2 = markdowncontent error
+
   const { token } = useContext(UserContext);
 
   const nav = useNavigate();
@@ -40,12 +43,22 @@ You can even include custom React components if you declare them in the "overrid
   const location = useLocation();
   //form refresh on location change
   useEffect(() => {
-    setTitle("");
+    setTitle("New Post");
     setMarkDownContent(markDownContent);
     setLoading(true);
     setPublished(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.key]);
+
+  useEffect(() => {
+    if (title.length === 0) {
+      setErrored(1);
+    } else if (markDownContent.length === 0) {
+      setErrored(2);
+    } else {
+      setErrored(0);
+    }
+  }, [title, markDownContent]);
 
   useEffect(() => {
     const startFetch = async () => {
@@ -60,7 +73,7 @@ You can even include custom React components if you declare them in the "overrid
       startFetch();
     } else if (!id && loading) {
       setMarkDownContent(markdown);
-      setTitle("");
+      setTitle("New Post");
       setLoading(false);
     }
   }, [fetchData, id, loading, markdown]);
@@ -74,6 +87,10 @@ You can even include custom React components if you declare them in the "overrid
   };
 
   const handleSubmit = async () => {
+    if (errored) {
+      //set error to user
+      return;
+    }
     setSubmitting(true);
     const response = await fetchData(url, {
       method: !id ? "POST" : "PUT",
@@ -110,6 +127,7 @@ You can even include custom React components if you declare them in the "overrid
     published,
     title,
     updateTitle,
+    errored,
   ];
 };
 

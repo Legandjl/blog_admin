@@ -2,7 +2,12 @@ const Functions = (props) => {
   return (
     <div className="functionWrap">
       {!props.submissionConfirmed ? (
-        <button className="submit" onClick={props.confirmationCheck}>
+        <button
+          className="submit"
+          onClick={props.confirmationCheck}
+          disabled={props.errored > 0}
+          style={{ backgroundColor: props.errored > 0 && "grey" }}
+        >
           {"Submit"}
         </button>
       ) : (
