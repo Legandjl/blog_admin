@@ -21,6 +21,8 @@ outline:none;
   }
 
   .commentSubmit button {
+      margin-top: 5px;
+    
     border: none;
     width:6em;
     height:2em;

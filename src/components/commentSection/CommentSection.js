@@ -38,7 +38,9 @@ const CommentSection = (props) => {
           load more
         </p>
       ) : comments.length === 0 ? (
-        <p>No comments to show</p>
+        <p style={{ marginTop: "5px", marginBottom: "5px" }}>
+          No comments to show
+        </p>
       ) : (
         <p>End of comments</p>
       )}
