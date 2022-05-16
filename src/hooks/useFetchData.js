@@ -11,14 +11,14 @@ const useFetchData = () => {
       setLoading(true);
       const data = await fetch(url, options);
       const jsonData = await data.json();
-      if (data.status === 400) {
-        setLoading(false);
-        nav(`/oops`, { replace: true });
-        return;
-      }
       if (data.status === 401) {
         setLoading(false);
         nav(`/unauthorised`, { replace: true });
+        return;
+      }
+      if (data.status === 400) {
+        setLoading(false);
+        nav(`/oops`, { replace: true });
         return;
       }
       if (data.status === 404) {
