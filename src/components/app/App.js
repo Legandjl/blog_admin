@@ -55,7 +55,14 @@ function App() {
             }
           />
           <Route path="/unauthorised" element={<Unauthorised />} />
-          <Route path="/oops" element={<Oops />} />
+          <Route
+            path="/oops"
+            element={
+              <ProtectedRoute>
+                <Oops />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
