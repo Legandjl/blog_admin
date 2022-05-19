@@ -18,12 +18,17 @@ The application allows editing markdown in browser, allowing the user to view ho
 
 ## Notes
 
-App is not optimised for mobile devices, as this was primarily an exercise in getting the frontend and backend communicating I decided to keep the frontend design simple.
+The application is not currently optimised for mobile devices. As this was primarily an exercise in getting the frontend and backend communicating I decided to keep the frontend design simple.
 
-The backend of this application can be viewed here: - //link
+## Details
 
-And the standard (non admin) frontend of the blog can be viewed here:- //link
-Both applications use the same backend.
+The backend of this application can be viewed here:
+
+https://github.com/Legandjl/blog
+
+And the public facing frontend can be viewed here:
+
+https://github.com/Legandjl/blog_front
 
 ## Thoughts on the process
 
