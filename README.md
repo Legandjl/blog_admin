@@ -12,10 +12,6 @@ All destructive actions are authenticated server side and frontend routes are pr
 
 User can Create, Read, Update and Delete blog posts and comments.
 
-If you wish to test out the App, the password is 9114
-
-https://legandjl.github.io/blog_admin/
-
 The application allows editing markdown in browser, allowing the user to view how the blog post will be rendered before submitting it.
 
 ## Notes
@@ -30,3 +26,8 @@ Both applications use the same backend.
 ## Thoughts on the process
 
 I enjoyed working on this application and have found that I prefer developing in this way as opposed to following the MVC pattern. I found it intuitive to have a clear separation of concerns of the frontend and the backend, and enjoyed jumping between the two and tweaking things. I feel I now have a solid grasp on the fundementals of developing applications in this way, and look forwards to building on this knowledge going forwards.
+
+## Live Demo
+
+If you wish to test out the App, the password is 9114
+https://legandjl.github.io/blog_admin/
