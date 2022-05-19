@@ -12,6 +12,8 @@ All destructive actions are authenticated server side and frontend routes are pr
 
 User can Create, Read, Update and Delete blog posts and comments.
 
+Posts and Comments use pagination to load data in blocks.
+
 The application allows editing markdown in browser, allowing the user to view how the blog post will be rendered before submitting it.
 
 ## Notes
