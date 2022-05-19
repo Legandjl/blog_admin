@@ -36,5 +36,5 @@ I enjoyed working on this application and have found that I prefer developing in
 
 ## Live Demo
 
-If you wish to test out the App, the password is 9114
+If you wish to test out the App, the password is 9114. Please don't delete any posts that have already been created, feel free to create, delete and edit your own.
 https://legandjl.github.io/blog_admin/
