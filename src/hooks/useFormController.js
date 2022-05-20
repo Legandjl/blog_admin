@@ -14,12 +14,15 @@ const useFormController = () => {
   * Embed snippets of \`code\`
   * Create [links](/)
   * ....
- 
+  * ✨Magic ✨
 
-<small>Sample content borrowed with thanks from [elm-markdown](http://elm-lang.org/examples/markdown) ❤️</small>
-    
+You can also add images ->
+![img](https://images.vexels.com/media/users/3/177921/isolated/lists/97d38fca50c65e8ab67a9caeb517cabd-penguin-cute-puffy-muzzle-flat.png)
+ 
+  
 You can even include custom React components if you declare them in the "overrides" option.
     
+  
 <MyComponent>Isn't that cool?</MyComponent>`;
 
   const [fetchData] = useFetchData();
