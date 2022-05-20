@@ -128,3 +128,8 @@ text-align: left;
       font-size: 0.8em;
       color:rgba(162, 27, 27, 0.696)
   }
+
+  .markdownDisplay img {
+        height:100%;
+        width:100px;   
+  }

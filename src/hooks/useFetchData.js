@@ -10,7 +10,6 @@ const useFetchData = () => {
       const url = `https://intense-chamber-01379.herokuapp.com${params}`;
       setLoading(true);
       const data = await fetch(url, options);
-      const jsonData = await data.json();
       if (data.status === 401) {
         setLoading(false);
         nav(`/unauthorised`, { replace: true });
@@ -30,6 +29,7 @@ const useFetchData = () => {
       if (!data.ok) {
         throw new Error("Could not fetch the resource");
       }
+      const jsonData = await data.json();
       setLoading(false);
       return jsonData;
     } catch (e) {
