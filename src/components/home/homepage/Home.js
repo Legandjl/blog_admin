@@ -16,6 +16,7 @@ const Home = () => {
   const [loading, data, refresh] = useLoadData(
     `/admin/${toSkip}?published=${currentFilter === "published"}`
   );
+
   // reset count & toskip on filter change
   const handleFilter = (val) => {
     setFilter(val);
@@ -51,10 +52,10 @@ const Home = () => {
       );
       setShowRightArrow(totalPosts > 10 + toSkip);
     };
-    if (loading) {
+    if (loading && !fetchInProgress) {
       checkTotalPosts();
     }
-  }, [currentFilter, fetchData, loading, toSkip]);
+  }, [currentFilter, fetchData, fetchInProgress, loading, toSkip]);
 
   const posts = data.map((dataItem) => {
     return <PostLink dataItem={dataItem} refresh={refresh} />;
