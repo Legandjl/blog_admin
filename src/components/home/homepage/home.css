@@ -8,6 +8,12 @@
     grid-template-rows: 1fr auto;
     margin-top: 4em;
     min-width: 40em;
+    margin-left: 5em;
+    margin-right: 5em;
+ 
+  
+
+ 
 
 }
 
@@ -29,6 +35,8 @@
   align-self: start;
   height:100%;
   grid-auto-rows: min-content;  
+
+ 
 }
 
 table {
@@ -36,10 +44,13 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    min-width: 80vw;
+
     height:100%;
     table-layout: fixed ;
   width: 100% ;
+  max-width: 70em;
+  min-width: 40em;
+ 
 
 
   }
